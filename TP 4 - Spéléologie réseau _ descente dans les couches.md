@@ -279,7 +279,7 @@ luca@BRUNO:~$ ip neigh show
 ```bash
 [lbruno@client1 ~]$ sudo ip neigh flush all
 [sudo] Mot de passe de yann : 
-[luca@client1 ~]$ curl google.fr
+[lbruno@client1 ~]$ curl google.fr
 <HTML><HEAD><meta http-equiv="content-type" content="text/html;charset=utf-8">
 <TITLE>301 Moved</TITLE></HEAD><BODY>
 <H1>301 Moved</H1>
