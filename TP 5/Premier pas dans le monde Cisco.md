@@ -15,7 +15,6 @@
  * [Définitions des IPs statiques](#ii21-définitions-des-ips-statiques)
  * [Définitions des noms de domaines](#ii22-définitions-des-noms-de-domaine)
 * [Ajout des routes](#ii3-ajout-des-routes)
-* [DHCP](#iii-dhcp)
 ## I. Préparation du Lab
 ### I.1 Préparation des VMs
 On a tout d'abord cloné trois fois la `VM_CCNA_Patron` pour obtenir les VMs suivantes :
@@ -446,4 +445,3 @@ DHCPOFFER from 10.5.2.11
 DHCPACK from 10.5.2.11 (xid=0xa2f7eb)
 bound to 10.5.2.50 -- renewal in 352 seconds.
 ```
-### Explorer un peu DHCP
