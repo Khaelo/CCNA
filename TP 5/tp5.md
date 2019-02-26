@@ -49,7 +49,7 @@ Nous avons ajouté un **Ethernet Switches** dans notre projet *GNS3* .
 
 ### I.4 Topologie et tableau récapitulatif
 #### Topologie
-![](https://github.com/Khaelo/CCNA/blob/master/TP5/images/Topologie_réseau.png)
+![](https://github.com/Khaelo/CCNA/blob/master/TP%205/image/Topologie_reseau.png)
 #### Tableau récapitulatif
 Machine | `NET1` | `NET2` | `NET12`
 --- | --- | --- | ---
