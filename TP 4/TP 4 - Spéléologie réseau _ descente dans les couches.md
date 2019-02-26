@@ -20,7 +20,7 @@ On a dû dans un premier temps créer et installer une VM patron avec les config
 * un disque de 8Go
 * l'`.iso` de CentOS 7 (sur le "contrôleur IDE")
 
-![](https://github.com/Khaelo/CCNA/blob/master/images/1.png)
+![](https://github.com/Khaelo/CCNA/blob/master/TP%204/images/1.png)
 
 Dans un deuxième temps, nous avons dû la configurer à partir des lignes de commandes ci-dessous :
 ```bash
@@ -55,26 +55,26 @@ Nous avons ensuite créé deux nouveaux réseaux host-only dont les spécificit�
   * la carte réseau de l'hôte doit porter l'IP `10.2.0.1`
   * ce réseau n'a **PAS** de serveur DHCP
 
-![](https://github.com/Khaelo/CCNA/blob/master/images/2.png)
-![](https://github.com/Khaelo/CCNA/blob/master/images/3.png)
+![](https://github.com/Khaelo/CCNA/blob/master/TP%204/images/2.png)
+![](https://github.com/Khaelo/CCNA/blob/master/TP%204/images/3.png)
 
 ### I.2 Création des VMs
 Dans cette partie, nous avons cloner trois fois la *VM "patron"* pour obtenir trois VMs distinctes :
 * **La VM Cliente** nommée *client1.tp4*
   * qui contient une carte réseau dans `vboxnet1` qui porte l'IP `10.1.0.10`
 
-  ![](https://github.com/Khaelo/CCNA/blob/master/images/6.png)
+  ![](https://github.com/Khaelo/CCNA/blob/master/TP%204/images/6.png)
 
 * **La VM Serveur** nommée *server1.tp4*
   * qui contient une carte réseau dans `vboxnet2` qui porte l'IP `10.2.0.10`
 
-  ![](https://github.com/Khaelo/CCNA/blob/master/images/7.png)
+  ![](https://github.com/Khaelo/CCNA/blob/master/TP%204/images/7.png)
 
 * **La VM Routeur** nommée *router1.tp4*
   * qui contient une carte réseau dans `vboxnet1` qui porte l'IP `10.1.0.254`
   * qui contient une carte réseau dans `vboxnet2` qui porte l'IP `10.2.0.254`
 
-  ![](https://github.com/Khaelo/CCNA/blob/master/images/8.png)
+  ![](https://github.com/Khaelo/CCNA/blob/master/TP%204/images/8.png)
 
 De plus après avoir défini les adresses IPs statiques de chacunes d'elles, nous leur avons défini des noms de domaines, rempli leur fichier `/etc/hosts` et pour terminer nous les avons "pingé" entre elles :
 * **ping de *client1* vers *router1.tp4* sur l'IP `10.1.0.254`:**
