@@ -60,7 +60,7 @@ Configuration des routeurs seulement :
 
 - [X] Activation d'**OSPF** : 
 
--`conf t
+-`conf t`
 
 -`(config)#router ospf 1`.
 
