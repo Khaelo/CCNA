@@ -18,11 +18,18 @@ Présentation du lab et contextualisation du TP [ici](https://github.com/It4lik/
 On parle de `r1.tp6.b1`, `r2.tp6.b1`, `r3.tp6.b1`, `r4.tp6.b1` et `r5.tp6.b1` :
 
 - [X] Définition des IPs statiques (Exemple avec le routeur 1 (ici R1): 
+
 -`R1# conf t`
+
 -`R1(config)#int [nom de l'interface]`
+
 -`R1(conf-t)#ip address [IP du réseau] [IP du masque]`)
+
+
 - [X] Définition du nom de domaine (Exemple avec le routeur 1 (ici R1): 
+
 -`R1# conf t`
+
 -`R1(config)#hostname [hostname]`
 
 __Ne pas oublier de sauvegarder les configurations avec `wr` (Non, je me suis pas fait avoir, c'est pas vrai)__
@@ -35,23 +42,34 @@ On parle de `client1.tp6.b1`, `client2.tp6.b1` et `server1.tp6.b1` :
 - [X] Installation de différents paquets réseau (déjà fait dans la VM patron)
 - [X] Enlever la carte NAT (déjà fait dans la VM patron)
 - [X] Définition des IP statiques (Manip' classico classique, `ip a` pour connaitre le nom de l'interface dont on veut changer l'ip, modification du fichier `ifcfg` avec la commande 
-*`su vi /etc/sysconfig/network-scripts/ifcfg-[Nom de l'interface]` 
+
+-`su vi /etc/sysconfig/network-scripts/ifcfg-[Nom de l'interface]` 
+
 (Ne pas oublier pour ce TP la Gateway) et pour finir le redémarrage de l'interface avec:
-*`su ifdown [Nom de l'interface]` et `sudo ifup [Nom de l'interface]`)
+
+-`su ifdown [Nom de l'interface]` et `sudo ifup [Nom de l'interface]`
+
 - [X] Définition du nom de domaine (`su vi /etc/hostname`)
-- [X] Remplissage des fichiers `hosts` (`su vi /etc/hosts`, une ligne se forme de la manière suivante : 
-*`[IP] [premier nom] [second nom] [plus de nom]`, (par exemple : **10.6.201.11 client2 client2.tp6.b1**)
+- [X] Remplissage des fichiers `hosts` (`su vi /etc/hosts`, une ligne se forme de la manière suivante :
+
+-`[IP] [premier nom] [second nom] [plus de nom]`, (par exemple : **10.6.201.11 client2 client2.tp6.b1**)
 
 #### Configuration OSPF
 
 Configuration des routeurs seulement :
 
 - [X] Activation d'**OSPF** : 
--`conf t` 
+
+-`conf t
+
 -`(config)#router ospf 1`.
+
 - [X] Configurer le **router-id** : 
+
 -`(config-router)#router-id [ID du routeur]` (Par exemple : `(config-router)#router-id 1.1.1.1`).
+
 - [X] Configuration des routes à partager :
+
 -`(config-router)#network [IP du réseau à partager] [Nombre d'IP disponibles dans ce réseau] area [Nunméro de Zone]`, qui donne par exemple : `(config-router)#network 10.6.100.0 0.0.0.3 area 0`.
 
 Pour vérifier que toutes ces configurations fonctionnent, on `ping` ou `traceroute` le serveur avec le client1 puis le client2 :
@@ -86,24 +104,38 @@ Pour vérifier que toutes ces configurations fonctionnent, on `ping` ou `tracero
 
 On télécharge la GNS3 VM, puis on configure son accès sur GNS3. Une fois fait, on redémarre GNS3 puis on ajoute le p'tit nuage à un routeur afin d'apporter internet au réseau (Ici il s'agira du router4.tp6.b1).
 Une fois ajouté, on vérifie sur quelle interface de notre routeur la carte NAT est branchée. Elle n'a normalement pas encore d'IP, let's go:
+
 -`r4.tp6.b1# conf t` 
--`r4.tp6.b1(config)# interface [Nom de l'interface]`) 
+
+-`r4.tp6.b1(config)# interface [Nom de l'interface]`
+
 puis on configure son IP comme dynamique grâce au DHCP : 
+
 -`r4.tp6.b1(config-if)# ip address dhcp`
 
 Pour vérifier que ça fonctionne, il faut faire une requête HTTP :
 
 -`r4.tp6.b1(config)# ip domain-lookup` pour activer le "Lookup DNS"
+
 -`r4.tp6.b1(config)# ip name-server 8.8.8.8` pour configurer un serveur DNS (ici, celui de google)
+
 -`r4.tp6.b1# telnet trip-hop.net 80` afin de récupérer l'HTML de la page internet souhaité, pour vérifier que l'on a bien l'Internet.
 
-Enfin, on configure le NAT en précisant dans la configuration de chaque interface du routeur connecté à internet: -(`r4.tp6.b1(config)# interface [Nom de l'interface]`) 
+
+Enfin, on configure le NAT en précisant dans la configuration de chaque interface du routeur connecté à internet: 
+
+-(`r4.tp6.b1(config)# interface [Nom de l'interface]`) 
+
 si il est dans le réseau de routeurs ou si il **sort** vers l'Interweb 
+
 -(`r4.tp6.b1(config-if)# ip nat inside` à l'intérieur du réseau ou `r4.tp6.b1(config-if)# ip nat outside` si il va vers l'extérieur).
 
 Ensuite, on active le NAT pour les membres de la liste 1 avec la commande 
+
 -`r4.tp6.b1(config)# ip nat inside source list 1 interface fastEthernet 0/0 overload` 
+
 puis on ajoute toutes les machines du réseau à la liste 1 : 
+
 -`r4.tp6.b1(config)# access-list 1 permit any`.
 
 Puis on partage la route par défaut à tout le monde (une fois sur la config routeur `r4.tp6.b1# conf t`, puis `r4.tp6.b1(config)# router ospf 1`) avec la commande `r4.tp6.b1(config-router)# default-information originate`.
@@ -145,8 +177,11 @@ Mar 12 09:43:44 server.tp6.b1 systemd[1]: Started firewalld - dynamic firewall d
 
 * 2. On ajoute une règle pour autoriser le trafique web :
 Avec la commande:
+
 -`sudo firewall-cmd --add-port=80/tcp --permanent` 
+
 puis on redémarre le FireWall: 
+
 -`sudo firewall-cmd --reload`.
 
 * 3. On installe le serveur web :
