@@ -35,12 +35,12 @@ On parle de `client1.tp6.b1`, `client2.tp6.b1` et `server1.tp6.b1` :
 - [X] Installation de différents paquets réseau (déjà fait dans la VM patron)
 - [X] Enlever la carte NAT (déjà fait dans la VM patron)
 - [X] Définition des IP statiques (Manip' classico classique, `ip a` pour connaitre le nom de l'interface dont on veut changer l'ip, modification du fichier `ifcfg` avec la commande 
--`su vi /etc/sysconfig/network-scripts/ifcfg-[Nom de l'interface]` 
+*`su vi /etc/sysconfig/network-scripts/ifcfg-[Nom de l'interface]` 
 (Ne pas oublier pour ce TP la Gateway) et pour finir le redémarrage de l'interface avec:
--`su ifdown [Nom de l'interface]` et `sudo ifup [Nom de l'interface]`)
+*`su ifdown [Nom de l'interface]` et `sudo ifup [Nom de l'interface]`)
 - [X] Définition du nom de domaine (`su vi /etc/hostname`)
 - [X] Remplissage des fichiers `hosts` (`su vi /etc/hosts`, une ligne se forme de la manière suivante : 
--`[IP] [premier nom] [second nom] [plus de nom]`, (par exemple : **10.6.201.11 client2 client2.tp6.b1**)
+*`[IP] [premier nom] [second nom] [plus de nom]`, (par exemple : **10.6.201.11 client2 client2.tp6.b1**)
 
 #### Configuration OSPF
 
