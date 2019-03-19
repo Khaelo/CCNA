@@ -47,10 +47,10 @@ On parle de `client1.tp6.b1`, `client2.tp6.b1` et `server1.tp6.b1` :
 
 (Ne pas oublier pour ce TP la Gateway) et pour finir le redémarrage de l'interface avec:
 
--`su ifdown [Nom de l'interface]` et `sudo ifup [Nom de l'interface]`
+-`su ifdown [Nom de l'interface]` et `su ifup [Nom de l'interface]`
 
 - [X] Définition du nom de domaine (`su vi /etc/hostname`)
-- [X] Remplissage des fichiers `hosts` (`su vi /etc/hosts`, une ligne se forme de la manière suivante :
+- [X] Remplissage des fichiers **hosts** `su vi /etc/hosts`, une ligne se forme de la manière suivante :
 
 -`[IP] [premier nom] [second nom] [plus de nom]`, (par exemple : **10.6.201.11 client2 client2.tp6.b1**)
 
@@ -124,11 +124,11 @@ Pour vérifier que ça fonctionne, il faut faire une requête HTTP :
 
 Enfin, on configure le NAT en précisant dans la configuration de chaque interface du routeur connecté à internet: 
 
--(`r4.tp6.b1(config)# interface [Nom de l'interface]`) 
+-`r4.tp6.b1(config)# interface [Nom de l'interface]` 
 
 si il est dans le réseau de routeurs ou si il **sort** vers l'Interweb 
 
--(`r4.tp6.b1(config-if)# ip nat inside` à l'intérieur du réseau ou `r4.tp6.b1(config-if)# ip nat outside` si il va vers l'extérieur).
+-`r4.tp6.b1(config-if)# ip nat inside` à l'intérieur du réseau ou `r4.tp6.b1(config-if)# ip nat outside` si il va vers l'extérieur.
 
 Ensuite, on active le NAT pour les membres de la liste 1 avec la commande 
 
